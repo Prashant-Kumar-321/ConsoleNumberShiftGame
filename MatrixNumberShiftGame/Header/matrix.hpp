@@ -2,6 +2,8 @@
 #include<iostream>
 #include <vector>
 
+#include "GameUtility.hpp"
+
 class Matrix
 {
 public:
@@ -12,7 +14,9 @@ public:
 	Matrix(const Matrix& other) = delete; 
 
 private: 
+	int getUniqueRandomNum(const int& min, const int& max, std::vector<bool>& generatedNums); 
 	void intializeGameBoard(); 
+	void placeEmptyCellRandomlyWithinBoard(); 
 private: 
 	int boardDimension; 
 	int empty_R; 
@@ -25,3 +29,4 @@ private:
 	std::vector<std::vector<int>> gameBoard; 
 
 };
+

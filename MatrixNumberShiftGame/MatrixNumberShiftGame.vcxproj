@@ -131,11 +131,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\GameUtility.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\matrix.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\matrix.hpp" />
+    <ClInclude Include="Header\GameUtility.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,9 +1,11 @@
 #include <iostream>
 #include "matrix.hpp"
 
+
 int main()
 {
-	Matrix gameBoard(4); 
+	const int Dimension = 4; 
+	Matrix gameBoard(Dimension); 
 	
 	return 0; 
 }
