@@ -9,10 +9,12 @@ class Matrix
 public:
 	Matrix(int dimension);
 
-	// Matrix object can neither be assigned nor be coied 
+	void show(); 
+
+private: 
+	// Matrix object can neither be assigned nor be copied 
 	Matrix& operator=(const Matrix& other) = delete; 
 	Matrix(const Matrix& other) = delete; 
-
 private: 
 	int getUniqueRandomNum(const int& min, const int& max, std::vector<bool>& generatedNums); 
 	void intializeGameBoard(); 
@@ -20,7 +22,7 @@ private:
 private: 
 	int boardDimension; 
 	int empty_R; 
-	int empty_C;
+	int empty_C; 
 	int totalMoves; 
 	int moveTried; 
 	bool isArranged; 

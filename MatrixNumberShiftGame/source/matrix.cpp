@@ -1,15 +1,25 @@
 #include "matrix.hpp"
 
 Matrix::Matrix(int dimension)
-	: boardDimension(dimension), empty_C(dimension-1), empty_R(dimension-1), /*This wil get updated*/
+	: boardDimension(dimension), 
+	empty_C(dimension-1), empty_R(dimension-1), /*This wil get updated*/
 	isArranged(false)
 {
 	// Intitialize member variable
+	moveTried = 0; 
+	totalMoves = 500; 
 
 	// Create a board of desired Dimension 
 	gameBoard.resize(dimension, std::vector<int>(dimension));
 
 	intializeGameBoard(); 
+
+	std::cout << "New Empty Row = " << empty_R << std::endl; 
+	std::cout << "New Empty Col = " << empty_C << std::endl; 
+}
+
+void Matrix::show()
+{
 }
 
 int Matrix::getUniqueRandomNum(const int& min, const int& max, std::vector<bool>& generatedNums)
@@ -25,6 +35,7 @@ int Matrix::getUniqueRandomNum(const int& min, const int& max, std::vector<bool>
 	return randomNumber; 
 }
 
+// Fill my Matrix with unique random values 
 void Matrix::intializeGameBoard()
 {
 	const int cells = boardDimension*boardDimension; // number of cells in the gameBoard 
@@ -55,16 +66,6 @@ void Matrix::intializeGameBoard()
 	gameBoard[empty_R][empty_C] = 0; 
 
 	placeEmptyCellRandomlyWithinBoard();
-
-
-
-	// test whether board is getting intialized properly or not 
-	for (int i = 0; i < boardDimension; ++i) {
-		for (int j = 0; j < boardDimension; ++j) {
-			std::cout << gameBoard[i][j] << "      ";
-		}
-		std::cout << std::endl; 
-	}
 }
 
 void Matrix::placeEmptyCellRandomlyWithinBoard()
