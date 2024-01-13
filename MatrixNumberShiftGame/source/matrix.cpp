@@ -74,22 +74,23 @@ void Matrix::placeEmptyCellRandomlyWithinBoard()
 	empty_C = new_EmptyCol; 
 }
 
-
 void Matrix::show()const noexcept(true)
 {
 	std::cout << std::endl;
 	const int& nums = boardDimension; // total number of numbers in a row 
 	const int spaceRate = 4;        // How space a number has been given 
+	std::string initialHorizontalSapce = "\t\t\t"; 
 
 	for (int i = 0; i < boardDimension; i++) {
-		std::cout << "\t\t"; 
-		printLine(nums, spaceRate); 
-		std::cout << std::endl; 
-		std::cout << "\t\t";
-		printNumbers(gameBoard[i]); 
+		std::cout << initialHorizontalSapce;
+		printLine(nums, spaceRate);
+		std::cout << std::endl;
+
+		std::cout << initialHorizontalSapce;
+		printNumbers(gameBoard[i]);
 		std::cout << std::endl;
 	}
-	std::cout << "\t\t";
+	std::cout << initialHorizontalSapce;
 	printLine(nums, spaceRate);
 	std::cout << std::endl; 
 }
