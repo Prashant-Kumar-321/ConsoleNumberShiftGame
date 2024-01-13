@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include<iomanip>
 #include <vector>
 
 #include "GameUtility.hpp"
@@ -9,7 +10,7 @@ class Matrix
 public:
 	Matrix(int dimension);
 
-	void show(); 
+	void show() const noexcept(true); 
 
 private: 
 	// Matrix object can neither be assigned nor be copied 

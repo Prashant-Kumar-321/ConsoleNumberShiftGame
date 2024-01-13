@@ -14,12 +14,6 @@ Matrix::Matrix(int dimension)
 
 	intializeGameBoard(); 
 
-	std::cout << "New Empty Row = " << empty_R << std::endl; 
-	std::cout << "New Empty Col = " << empty_C << std::endl; 
-}
-
-void Matrix::show()
-{
 }
 
 int Matrix::getUniqueRandomNum(const int& min, const int& max, std::vector<bool>& generatedNums)
@@ -78,4 +72,24 @@ void Matrix::placeEmptyCellRandomlyWithinBoard()
 	// update empty cell 
 	empty_R = new_EmptyRow; 
 	empty_C = new_EmptyCol; 
+}
+
+
+void Matrix::show()const noexcept(true)
+{
+	std::cout << std::endl;
+	const int& nums = boardDimension; // total number of numbers in a row 
+	const int spaceRate = 4;        // How space a number has been given 
+
+	for (int i = 0; i < boardDimension; i++) {
+		std::cout << "\t\t"; 
+		printLine(nums, spaceRate); 
+		std::cout << std::endl; 
+		std::cout << "\t\t";
+		printNumbers(gameBoard[i]); 
+		std::cout << std::endl;
+	}
+	std::cout << "\t\t";
+	printLine(nums, spaceRate);
+	std::cout << std::endl; 
 }
