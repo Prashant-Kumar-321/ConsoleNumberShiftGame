@@ -39,3 +39,17 @@ void printNumbers(const std::vector<int>& row)
 		}
 	}
 }
+
+char readKey()
+{
+	char arrow; 
+	arrow = _getch(); 
+	if (arrow == PREFIX_CODE) {
+		arrow = _getch(); // read extended code 
+	}
+	else {
+		arrow = '\0'; // put null character to avoid collision with same ascii value of alpha character
+	}
+
+	return arrow; 
+}

@@ -14,6 +14,10 @@ Matrix::Matrix(int dimension)
 
 	intializeGameBoard(); 
 
+	// making sure that number will be not arranged after intialization
+	while (isArrange()) {
+		intializeGameBoard(); 
+	}
 }
 
 int Matrix::getUniqueRandomNum(const int& min, const int& max, std::vector<bool>& generatedNums)
@@ -60,6 +64,8 @@ void Matrix::intializeGameBoard()
 	gameBoard[empty_R][empty_C] = 0; 
 
 	placeEmptyCellRandomlyWithinBoard();
+
+	updateIsArranged(); 
 }
 
 void Matrix::placeEmptyCellRandomlyWithinBoard()
@@ -73,6 +79,44 @@ void Matrix::placeEmptyCellRandomlyWithinBoard()
 	empty_R = new_EmptyRow; 
 	empty_C = new_EmptyCol; 
 }
+
+/*Check is Matrix is Arranged */
+bool Matrix::isUpperTriangleArranged() const noexcept 
+{
+	for (int row = 0; row < boardDimension; ++row)
+	{
+		for (int col = row+1; col < boardDimension; ++col) {
+			int desiredNumber = row * boardDimension + col; 
+			if (gameBoard[row][col] != desiredNumber) { return false; }
+		}
+	}
+	return true;
+}
+
+bool Matrix::isLowerTriangleArraanged()const noexcept
+{
+	for (int row = 0; row < boardDimension; ++row)
+	{
+		for (int col = 0; col <= row; ++col) {
+			int desiredNumber = row * boardDimension + col; 
+			if (gameBoard[row][col] != desiredNumber) { return false; }
+		}
+	}
+
+	return true; 
+}
+
+void Matrix::updateIsArranged()
+{
+	if ( !isUpperTriangleArranged()) {
+		isArranged = false; 
+	}
+	else {
+		isArranged = isLowerTriangleArraanged(); 
+	}
+}	
+
+bool Matrix::isArrange()const noexcept { return isArranged; }
 
 void Matrix::show()const noexcept(true)
 {

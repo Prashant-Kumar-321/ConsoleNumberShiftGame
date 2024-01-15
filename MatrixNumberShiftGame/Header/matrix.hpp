@@ -9,8 +9,8 @@ class Matrix
 {
 public:
 	Matrix(int dimension);
-
 	void show() const noexcept(true); 
+	bool isArrange() const noexcept; 
 
 private: 
 	// Matrix object can neither be assigned nor be copied 
@@ -18,8 +18,14 @@ private:
 	Matrix(const Matrix& other) = delete; 
 private: 
 	int getUniqueRandomNum(const int& min, const int& max, std::vector<bool>& generatedNums); 
+	void placeEmptyCellRandomlyWithinBoard();
+	bool isUpperTriangleArranged()const noexcept; 
+	bool isLowerTriangleArraanged()const noexcept; 
+	void updateIsArranged(); 
+
+private:
 	void intializeGameBoard(); 
-	void placeEmptyCellRandomlyWithinBoard(); 
+
 private: 
 	int boardDimension; 
 	int empty_R; 
