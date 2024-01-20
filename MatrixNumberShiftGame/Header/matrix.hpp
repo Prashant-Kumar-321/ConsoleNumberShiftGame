@@ -10,8 +10,9 @@ class Matrix
 public:
 	Matrix(int dimension);
 	void show() const noexcept(true); 
-	bool isArrange() const noexcept; 
-
+	bool isArrange() const noexcept;
+	void shiftNumber(int dir) noexcept; 
+	
 private: 
 	// Matrix object can neither be assigned nor be copied 
 	Matrix& operator=(const Matrix& other) = delete; 
@@ -21,7 +22,16 @@ private:
 	void placeEmptyCellRandomlyWithinBoard();
 	bool isUpperTriangleArranged()const noexcept; 
 	bool isLowerTriangleArraanged()const noexcept; 
-	void updateIsArranged(); 
+	void updateIsArranged();
+
+	void increaseTriedMoves();
+	int remainingMoves() const; 
+
+	bool isValidMove(int dir)const noexcept;
+	void shiftRight()noexcept; 
+	void shiftLeft()noexcept; 
+	void shiftUp()noexcept;
+	void shiftDown()noexcept; 
 
 private:
 	void intializeGameBoard(); 
@@ -36,6 +46,5 @@ private:
 
 	// Actual Game Board 
 	std::vector<std::vector<int>> gameBoard; 
-
 };
 

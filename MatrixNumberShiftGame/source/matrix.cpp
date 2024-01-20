@@ -114,7 +114,8 @@ void Matrix::updateIsArranged()
 	else {
 		isArranged = isLowerTriangleArraanged(); 
 	}
-}	
+	 
+}
 
 bool Matrix::isArrange()const noexcept { return isArranged; }
 
@@ -122,7 +123,7 @@ void Matrix::show()const noexcept(true)
 {
 	std::cout << std::endl;
 	const int& nums = boardDimension; // total number of numbers in a row 
-	const int spaceRate = 4;        // How space a number has been given 
+	const int spaceRate = 4;        // How space a number will take
 	std::string initialHorizontalSapce = "\t\t\t"; 
 
 	for (int i = 0; i < boardDimension; i++) {
@@ -137,4 +138,17 @@ void Matrix::show()const noexcept(true)
 	std::cout << initialHorizontalSapce;
 	printLine(nums, spaceRate);
 	std::cout << std::endl; 
+
+}
+
+
+//********************** Moves Count ***********************************
+void Matrix::increaseTriedMoves()
+{
+	moveTried++;
+}
+
+int Matrix::remainingMoves() const
+{
+	return totalMoves - moveTried;
 }
