@@ -124,7 +124,7 @@ void Matrix::show()const noexcept(true)
 	std::cout << std::endl;
 	const int& nums = boardDimension; // total number of numbers in a row 
 	const int spaceRate = 4;        // How space a number will take
-	std::string initialHorizontalSapce = "\t\t\t"; 
+	std::string initialHorizontalSapce = "\t\t\t";
 
 	for (int i = 0; i < boardDimension; i++) {
 		std::cout << initialHorizontalSapce;

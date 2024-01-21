@@ -1,31 +1,17 @@
 #include <iostream>
+#include <string>
 #include "matrix.hpp"
 
 
 int main()
 {
+	int LEVEL = 1; 
+	std::string player = ""; 
+	inputPlayer(player); 
 
-	const int Dimension = 4; 
-	Matrix gameBoard(Dimension);
-	gameBoard.show();
-	//gameBoard.printEmptyCellLocation();
-	//std::cout << gameBoard.getBoardDimension() << std::endl; 
-	//std::cout << "Arranged = "<< gameBoard.isArrange() << std::endl;
-		
-	// **** Bug in shifting Numbers *****
-
-	std::cout << gameBoard.remainingMoves() << std::endl; 
-	gameBoard.shiftNumber(readKey());
-	std::cout << gameBoard.remainingMoves() << std::endl; 
-
-	//gameBoard.shiftNumber(80); // down 
-	//gameBoard.shiftNumber(75); // left 
-	//gameBoard.shiftNumber(77); // right 
-	gameBoard.show(); 
-	//std::cout << gameBoard.isArrange() << std::endl; 
-
-
-
+	Game::Rule::display(); 
+	Game::Rule::printHeading();
+	displayPlayer(player); 
 
 	return 0; 
 }
