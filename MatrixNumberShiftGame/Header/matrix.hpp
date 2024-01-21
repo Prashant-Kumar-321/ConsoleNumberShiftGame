@@ -12,7 +12,13 @@ public:
 	void show() const noexcept(true); 
 	bool isArrange() const noexcept;
 	void shiftNumber(int dir) noexcept; 
+	int remainingMoves() const; 
 	
+
+	// Test purpose 
+	void printEmptyCellLocation() const ;
+	int getBoardDimension()const; 
+
 private: 
 	// Matrix object can neither be assigned nor be copied 
 	Matrix& operator=(const Matrix& other) = delete; 
@@ -22,10 +28,9 @@ private:
 	void placeEmptyCellRandomlyWithinBoard();
 	bool isUpperTriangleArranged()const noexcept; 
 	bool isLowerTriangleArraanged()const noexcept; 
-	void updateIsArranged();
+	void updateIsArrange();
 
 	void increaseTriedMoves();
-	int remainingMoves() const; 
 
 	bool isValidMove(int dir)const noexcept;
 	void shiftRight()noexcept; 

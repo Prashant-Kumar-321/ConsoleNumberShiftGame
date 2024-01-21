@@ -65,7 +65,7 @@ void Matrix::intializeGameBoard()
 
 	placeEmptyCellRandomlyWithinBoard();
 
-	updateIsArranged(); 
+	updateIsArrange(); 
 }
 
 void Matrix::placeEmptyCellRandomlyWithinBoard()
@@ -106,7 +106,7 @@ bool Matrix::isLowerTriangleArraanged()const noexcept
 	return true; 
 }
 
-void Matrix::updateIsArranged()
+void Matrix::updateIsArrange()
 {
 	if ( !isUpperTriangleArranged()) {
 		isArranged = false; 
@@ -151,4 +151,18 @@ void Matrix::increaseTriedMoves()
 int Matrix::remainingMoves() const
 {
 	return totalMoves - moveTried;
+}
+
+
+
+
+// Test purpose Function 
+void Matrix::printEmptyCellLocation() const
+{
+	std::cout << "emtpt Row = "<< empty_R << " , Empty Col = " << empty_C << std::endl;
+}
+
+int Matrix::getBoardDimension() const
+{
+	return boardDimension;
 }

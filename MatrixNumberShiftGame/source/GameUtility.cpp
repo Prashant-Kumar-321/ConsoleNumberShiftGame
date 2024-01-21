@@ -25,13 +25,11 @@ void printLine(int nums, int spaceRate)
 
 void printNumbers(const std::vector<int>& row)
 {
-	int temp=0;
 	std::cout << '|';
 	for (int i = 0; i < row.size(); ++i)
 	{
 		if (row[i] == 0) // Empty cell of game board 
 		{
-			temp = i; 
 			std::cout << std::setw(3) << std::setfill(' ') << std::right << 
 				SPACE << GAP << '|';
 		}
@@ -40,8 +38,6 @@ void printNumbers(const std::vector<int>& row)
 				row[i] << GAP << '|';
 		}
 	}
-
-	std::cout << "\t\t\t " << temp << std::endl;
 }
 
 char readKey()

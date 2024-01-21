@@ -41,12 +41,11 @@ void Matrix::shiftLeft()noexcept
 
 void Matrix::shiftUp()noexcept
 {
-	int belowRow = empty_R + 1; 
 	int& emptyCell = gameBoard[empty_R][empty_C];
-	int& downCell = gameBoard[belowRow][empty_C];
+	int& downCell = gameBoard[empty_R+1][empty_C];
 
-	//std::swap(gameBoard[empty_R][empty_C], gameBoard[empty_R + 1][empty_C]);
 	std::swap(emptyCell, downCell);
+
 	empty_R += 1;  // empty cell came one cell down 
 }
 
@@ -67,17 +66,19 @@ void Matrix::shiftNumber(int dir) noexcept
 		switch (dir)
 		{
 		case UP:
-			shiftUp(); 
+			shiftUp();
+			break; 
 		case DOWN: 
 			shiftDown(); 
+			break; 
 		case LEFT: 
-			shiftLeft(); 
+			shiftLeft();
+			break; 
 		case RIGHT: 
 			shiftRight(); 
+			break; 
 		}
-		show();
-
-		updateIsArranged(); // check whether arranged or not and update isArranged 
+		updateIsArrange(); // check whether arranged or not and update isArranged 
 		increaseTriedMoves(); 
 	}
 	else
