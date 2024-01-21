@@ -14,6 +14,11 @@ int __random__::rand(int min, int max)
 	return dis(gen); 
 }
 
+void clearScreen()
+{
+	system("cls"); 
+}
+
 void printLine(int nums, int spaceRate)
 {
 	std::cout << '+';
@@ -46,6 +51,9 @@ char readKey()
 	arrow = _getch(); 
 	if (arrow == PREFIX_CODE) {
 		arrow = _getch(); // read extended code 
+	}
+	else if (arrow == 27) { // Esc key 
+		arrow = 27; 
 	}
 	else {
 		arrow = '\0'; // put null character to avoid collision with same ascii value of alpha character
@@ -99,7 +107,7 @@ void Game::Rule::display()
 	std::cout << "Game Rules :" << std::endl; 
 	std::cout<< "\t1. You can Move Number only by one(1) CELL at a time by Arrow Keys !\n\n" << std::endl;
 	std::cout<< "\t\tTO Move up : HIT Up Arrow key\n" << std::endl;
-	std::cout<< "\t\tTO Move Down : HIT Down Aroow key\n" << std::endl;
+	std::cout<< "\t\tTO Move Down : HIT Down Arrow key\n" << std::endl;
 	std::cout<< "\t\tTO Move Left : HIT Left Arrow Key \n" << std::endl;
 	std::cout<< "\t\tTO Move Right : HIT Right Arrow key\n\n" << std::endl;
 

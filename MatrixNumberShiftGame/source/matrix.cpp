@@ -152,3 +152,8 @@ int Matrix::remainingMoves() const
 {
 	return totalMoves - moveTried;
 }
+
+void Matrix::setTotalMoves(int moves)
+{
+	totalMoves = moves; 
+}

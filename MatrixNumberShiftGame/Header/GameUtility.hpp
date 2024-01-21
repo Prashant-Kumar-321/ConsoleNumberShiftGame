@@ -20,6 +20,8 @@ namespace __random__
 	int rand(int min, int max); 
 }
 
+void clearScreen(); 
+
 void printLine(int nums, int spaceRate); 
 void printNumbers(const std::vector<int>& row); 
 

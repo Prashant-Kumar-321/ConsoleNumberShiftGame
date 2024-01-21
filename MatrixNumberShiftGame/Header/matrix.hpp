@@ -12,7 +12,9 @@ public:
 	void show() const noexcept(true); 
 	bool isArrange() const noexcept;
 	void shiftNumber(int dir) noexcept; 
-	int remainingMoves() const; 
+	int remainingMoves() const;
+
+	void setTotalMoves(int moves); 
 	
 private: 
 	// Matrix object can neither be assigned nor be copied 
