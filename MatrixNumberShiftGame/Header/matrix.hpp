@@ -14,16 +14,12 @@ public:
 	void shiftNumber(int dir) noexcept; 
 	int remainingMoves() const; 
 	
-
-	// Test purpose 
-	void printEmptyCellLocation() const ;
-	int getBoardDimension()const; 
-
 private: 
 	// Matrix object can neither be assigned nor be copied 
 	Matrix& operator=(const Matrix& other) = delete; 
 	Matrix(const Matrix& other) = delete; 
 private: 
+	void intializeGameBoard(); 
 	int getUniqueRandomNum(const int& min, const int& max, std::vector<bool>& generatedNums); 
 	void placeEmptyCellRandomlyWithinBoard();
 	bool isUpperTriangleArranged()const noexcept; 
@@ -37,9 +33,6 @@ private:
 	void shiftLeft()noexcept; 
 	void shiftUp()noexcept;
 	void shiftDown()noexcept; 
-
-private:
-	void intializeGameBoard(); 
 
 private: 
 	int boardDimension; 

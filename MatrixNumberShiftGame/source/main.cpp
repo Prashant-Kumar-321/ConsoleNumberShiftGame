@@ -4,10 +4,6 @@
 
 int main()
 {
-	//72 u
-	//80 d
-	//75 l
-	//77 r
 
 	const int Dimension = 4; 
 	Matrix gameBoard(Dimension);
@@ -19,7 +15,7 @@ int main()
 	// **** Bug in shifting Numbers *****
 
 	std::cout << gameBoard.remainingMoves() << std::endl; 
-	gameBoard.shiftNumber(72);
+	gameBoard.shiftNumber(readKey());
 	std::cout << gameBoard.remainingMoves() << std::endl; 
 
 	//gameBoard.shiftNumber(80); // down 
