@@ -1,51 +1,73 @@
 #include <iostream>
 #include <string>
-#include<Windows.h>
+//#include <Windows.h>
+#include <memory>
 
 #include "matrix.hpp"
 
 
 int main()
 {
-	int LEVEL = 1; 
-	std::string player = "Prashant"; 
-/*	inputPlayer(player);
+	int LEVEL = 1;
+	int TOTALMOVES = 200;
+	std::string player = "Prashant";
+	inputPlayer(player);
 
-	clearScreen(); 
-	Game::Rule::display()*/; 
+	clearScreen();
+	Rule::display();
 
-	// Creating a game Object 
-	Matrix *game = new Matrix(LEVEL + 3); // dim = LEVEL+3.  
-	game->setTotalMoves(5); 
-
-	// Main game Loop 
-	while (!game->isArrange() && game->remainingMoves() != 0)
+	while (true)
 	{
-		clearScreen(); 
-		Game::Rule::printHeading();
-		displayPlayer(player);
+		// Creating a game Object 
+		std::unique_ptr<Matrix> gameBoard = std::make_unique<Matrix>(LEVEL + 3); // dim = LEVEL+3.  
+		gameBoard->setTotalMoves(TOTALMOVES);
 
-		game->show(); 
-		char key = readKey();
-		// user wants to end the game 
-		if (key == 27) { // Esc key; 
-			exit(0); 
-		} 
+		// Main game Loop 
+		while (!gameBoard->isArrange() && gameBoard->remainingMoves() != 0)
+		{
+			clearScreen();
+			Rule::printHeading();
+			displayStatusofPlayer(player, LEVEL, gameBoard->remainingMoves());
 
-		game->shiftNumber(key);
-	}
+			gameBoard->show();
+			char key = readKey();
 
-	if (game->isArrange()) {
-		std::cout << "User solved the puzzle" << std::endl; 
-	}
-	else // moves finished
-	{
-		std::cout << "Player could not arrange in the given moves"<< std::endl; 
-	}
+			// user wants to end the game 
+			if (key == ESC) { // Esc key; 
+				exit(0);
+			}
 
+			gameBoard->shiftNumber(key);
+		}
 
+		// Decision after game loop 
+		if (gameBoard->isArrange()) {
 
-	delete game; 
+			std::cout << "congratulation \""<< player << "\" " << std::endl;
 
+			if (askWinnerIfWantsToLevelUp() == NO) {
+				std::exit(0); 
+			}
+			else {
+				LEVEL += 1; 
+				TOTALMOVES *= 2; 
+			}
+		}
+		else //Moves ran out 
+		{
+			clearScreen();
+			Rule::printHeading();
+			displayStatusofPlayer(player, LEVEL, gameBoard->remainingMoves());
+			gameBoard->show();
+
+			std::cout << "You Loose the Game" << std::endl;
+			if (askLooserIfWantsToRetry() == false) {
+				exit(0); // clsoe game
+			}
+		}
+    }
+
+	std::cout << "Prgram has ended " << std::endl;
+	std::cout<< _getch(); 
 	return 0; 
 }

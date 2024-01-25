@@ -3,12 +3,8 @@
 Matrix::Matrix(int dimension)
 	: boardDimension(dimension), 
 	empty_C(dimension-1), empty_R(dimension-1), /*This wil get updated*/
-	isArranged(false)
+	isArranged(false), moveTried(0),totalMoves(0)/*Temporary*/
 {
-	// Intitialize member variable
-	moveTried = 0; 
-	totalMoves = 500; 
-
 	// Create a board of desired Dimension 
 	gameBoard.resize(dimension, std::vector<int>(dimension));
 

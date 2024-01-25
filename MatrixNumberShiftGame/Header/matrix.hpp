@@ -9,6 +9,7 @@ class Matrix
 {
 public:
 	Matrix(int dimension);
+	~Matrix() { std::cout << "Destructor" << std::endl; }
 	void show() const noexcept(true); 
 	bool isArrange() const noexcept;
 	void shiftNumber(int dir) noexcept; 

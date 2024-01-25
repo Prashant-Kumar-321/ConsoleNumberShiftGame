@@ -13,6 +13,8 @@ constexpr int UP = 72;
 constexpr int DOWN = 80;
 constexpr int LEFT = 75;
 constexpr int RIGHT = 77;
+constexpr int ESC = 27;
+constexpr bool NO = false; 
 
 
 namespace __random__
@@ -30,15 +32,16 @@ char readKey();
 
 //  *******************Player information**************************
 void inputPlayer(std::string& player); 
-void displayPlayer(std::string& player); 
+void displayStatusofPlayer(std::string& playerName, int level, int remMoves); 
 
-namespace Game
+// Looser or winneer Player 
+bool askLooserIfWantsToRetry(); 
+bool askWinnerIfWantsToLevelUp(); 
+
+class Rule
 {
-	class Rule
-	{
-	public:
-		static void printHeading(); 
-		static void display();
-		static void displayArrangedMatrix(int dim); 
-	};
-}
+public:
+	static void printHeading(); 
+	static void display();
+	static void displayArrangedMatrix(int dim); 
+};

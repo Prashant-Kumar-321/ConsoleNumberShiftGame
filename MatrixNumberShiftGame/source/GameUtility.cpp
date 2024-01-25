@@ -45,24 +45,25 @@ void printNumbers(const std::vector<int>& row)
 	}
 }
 
+
 char readKey()
 {
-	char arrow; 
-	arrow = _getch(); 
-	if (arrow == PREFIX_CODE) {
-		arrow = _getch(); // read extended code 
+	char key; 
+	key = _getch(); 
+	if (key == PREFIX_CODE) {
+		key = _getch(); // read extended code 
 	}
-	else if (arrow == 27) { // Esc key 
-		arrow = 27; 
+	else if (key == 27) { // Esc key 
+		key = 27; 
 	}
 	else {
-		arrow = '\0'; // put null character to avoid collision with same ascii value of alpha character
+		key = '\0'; // put null character to avoid collision with same ascii value of alpha character
 	}
 
-	return arrow; 
+	return key; 
 }
 
-void Game::Rule::displayArrangedMatrix(int dim)
+void Rule::displayArrangedMatrix(int dim)
 {
 	std::vector<int> row(dim); 
 	std::string horizontalSpace = "\t\t"; 
@@ -93,18 +94,18 @@ void Game::Rule::displayArrangedMatrix(int dim)
 	std::cout << std::endl; 
 }
 
-void Game::Rule::printHeading()
+void Rule::printHeading()
 {
 	std::cout << std::setw(50) << "MATRIX PUZZLE" << std::endl;
 	std::cout << std::setw(50) << "--------------" << std::endl;
 }
 
-void Game::Rule::display()
+void Rule::display()
 {
 	printHeading(); 
 	for (int i = 0; i < 4; ++i) { std::cout << "\n"; } // print 4 new lines 
 
-	std::cout << "Game Rules :" << std::endl; 
+	std::cout << std::setw(30)<< "Game Rules :" << std::endl;
 	std::cout<< "\t1. You can Move Number only by one(1) CELL at a time by Arrow Keys !\n\n" << std::endl;
 	std::cout<< "\t\tTO Move up : HIT Up Arrow key\n" << std::endl;
 	std::cout<< "\t\tTO Move Down : HIT Down Arrow key\n" << std::endl;
@@ -121,8 +122,9 @@ void Game::Rule::display()
 	displayArrangedMatrix(3); // print arranged 3x3 matrix 
 	
 	std::cout << "\n"; 
-	std::cout<< "\t5. You can exit the Game at any time by pressing \'E\' or \'e\'\n\n"<< std::endl;
+	std::cout<< "\t5. You can exit the Game at any time by pressing ESC \n\n"<< std::endl;
 	std::cout<< "\tTry to arrange in minimimum possible number of moves \n"<< std::endl;
+	std::cout << "\tBest of Luck !!" << std::endl; 
 	std::cout << "\tEnter any key to start Game.... \n\a" << std::endl;
 	int temp = _getch(); //ignore i don't have to do anything with the return value
 	 
@@ -133,6 +135,39 @@ void inputPlayer(std::string& player) {
 	std::cout << "Player Name : ";
 	std::getline(std::cin, player);
 }
-void displayPlayer(std::string& player) {
-	std::cout << "Player Name: "<< player << std::endl;
+
+void displayStatusofPlayer(std::string& playerName, int level, int remMoves) {
+	// print everything in a single line 
+	std::cout << "Player Name: " << std::setw(25) << std::left << playerName;
+	std::cout << "Level : " << std::setw(10) << std::left << level;
+	std::cout << "Remaining Moves : " << remMoves;
+	std::cout<< std::endl;
+
+
+	// expected output 
+	// Player Name: Prashant Kumar Gupta     Level : 1         Remaining Moves: 5 
+
+}
+
+bool askLooserIfWantsToRetry()
+{
+	std::cout << "Press \'ESC\' to Quit " << std::endl;
+	std::cout << "Press any key to Retry the Level " << std::endl;
+	int userChoice = readKey();
+	if (userChoice == ESC) {
+		return false; 
+	}
+	return true;
+}
+
+bool askWinnerIfWantsToLevelUp()
+{
+	std::cout << "Press ESC to Quit" << std::endl;
+	std::cout << "Press any key to Enter in next level" << std::endl;
+
+	int userChoice = readKey();
+	if (userChoice == ESC) {
+		return false; 
+	}
+	return true;
 }
