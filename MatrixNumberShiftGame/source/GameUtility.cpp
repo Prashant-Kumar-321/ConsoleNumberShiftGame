@@ -105,12 +105,12 @@ void Rule::display()
 	printHeading(); 
 	for (int i = 0; i < 4; ++i) { std::cout << "\n"; } // print 4 new lines 
 
-	std::cout << std::setw(30)<< "Game Rules :" << std::endl;
+	std::cout<< "\tGAME RULES \n\n" << std::endl;
 	std::cout<< "\t1. You can Move Number only by one(1) CELL at a time by Arrow Keys !\n\n" << std::endl;
-	std::cout<< "\t\tTO Move up : HIT Up Arrow key\n" << std::endl;
-	std::cout<< "\t\tTO Move Down : HIT Down Arrow key\n" << std::endl;
-	std::cout<< "\t\tTO Move Left : HIT Left Arrow Key \n" << std::endl;
-	std::cout<< "\t\tTO Move Right : HIT Right Arrow key\n\n" << std::endl;
+	std::cout<< "\t\t"<< std::setw(16)<< std::left<< "TO Move Up"<< ": HIT Up Arrow key\n" << std::endl;
+	std::cout<< "\t\t"<< std::setw(16)<< std::left<< "TO Move Down"<< ": HIT Down Arrow key\n" << std::endl;
+	std::cout<< "\t\t"<< std::setw(16)<< std::left<< "TO Move Left"<< ": HIT Left Arrow Key \n" << std::endl;
+	std::cout<< "\t\t"<< std::setw(16)<< std::left<< "TO Move Right"<< ": HIT Right Arrow key\n\n" << std::endl;
 
 	std::cout<< "\t2. You can move Number only at empty position  \n\n" << std::endl;
 

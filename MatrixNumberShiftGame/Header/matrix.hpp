@@ -3,7 +3,7 @@
 #include<iomanip>
 #include <vector>
 
-#include "GameUtility.hpp"
+#include "../Header/GameUtility.hpp"
 
 class Matrix
 {

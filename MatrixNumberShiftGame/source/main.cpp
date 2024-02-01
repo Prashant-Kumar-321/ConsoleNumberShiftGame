@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-//#include <Windows.h>
 #include <memory>
 
 #include "matrix.hpp"
@@ -9,7 +8,7 @@
 int main()
 {
 	int LEVEL = 1;
-	int TOTALMOVES = 200;
+	int TOTALMOVES = 700;
 	std::string player = "Prashant";
 	inputPlayer(player);
 
