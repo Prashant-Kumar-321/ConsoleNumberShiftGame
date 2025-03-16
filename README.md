@@ -1,5 +1,3 @@
-![Static Badge](https://img.shields.io/badge/NumberShift-Game-blue)
-
 # CONSOLE NUMBER SHIFT GAME
 
 ## DESCRIPTION 
@@ -22,20 +20,21 @@ This is a console number shift game implemented in C++. The game displays a squa
       For example 
       *#include "matrix.hpp"* change this to #include "../Header/matrix.cpp"  
       Do the same with every cpp file
-      2. Navigate to **source** directory of the project in the integrated terminal  
-      and Execute the following command to compile and run .exe file  
+      2. Navigate to```source``` directory of the project 
+      and Execute the following command to compile the project
        1. To compile and generate exe file  
            ``` 
-             g++ --std=c++14 -o  ..\..\Executable\MatrixNumberShift  .\GameUtility.cpp .\main.cpp matrix.cpp .\matrix1.cpp
+            Windows:
+             g++ --std=c++14 -o  ..\..\Executable\MatrixNumberShift  .\GameUtility.cpp .\main.cpp matrix.cpp .\matrix1.cpp -lncurses
+
+            Linux:
+             g++ --std=c++14 -o  ../../Executable/MatrixNumberShift  ./GameUtility.cpp ./main.cpp ./matrix.cpp ./matrix1.cpp -lncurses
             ``` 
             The above command will create an exe file in the Executable directory and by double clicking it you can run your game. 
 
 ## Usage 
-To start playing the game, Go to the *Executable* folder and open *exe* file by double clicking on it. 
-
-
-## Contribution 
-Sure, here’s a template for a contribution section you can add to your README:
+To start playing the game, Navigate to the *Executable* folder and open *exe* file by double clicking on it or by running the following command in the terminal. 
+```./MatrixNumberShift.exe    ``` 
 
 ## Contributing
 

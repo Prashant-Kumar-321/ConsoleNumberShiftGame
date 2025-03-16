@@ -1,17 +1,18 @@
-#include"matrix.hpp"
+#include<ncurses.h>
+#include"../Header/matrix.hpp"
 
 // handle wrong dir as well as not possible shift 
 bool Matrix::isValidMove(int dir) const noexcept 
 {
 	switch (dir)
 	{
-	case UP: 
+	case KEY_UP: 
 		return empty_R != boardDimension - 1; // not last row 
-	case DOWN: 
+	case KEY_DOWN: 
 		return empty_R != 0; // first row 
-	case RIGHT: 
+	case KEY_RIGHT: 
 		return empty_C != 0; // first col
-	case LEFT: 
+	case KEY_LEFT: 
 		return empty_C != boardDimension - 1; // last col 
 	}
 
@@ -63,18 +64,17 @@ void Matrix::shiftNumber(int dir) noexcept
 {
 	if ( isValidMove(dir))
 	{
-		switch (dir)
-		{
-		case UP:
+		switch (dir){
+		case KEY_UP:
 			shiftUp();
 			break; 
-		case DOWN: 
+		case KEY_DOWN: 
 			shiftDown(); 
 			break; 
-		case LEFT: 
+		case KEY_LEFT: 
 			shiftLeft();
 			break; 
-		case RIGHT: 
+		case KEY_RIGHT: 
 			shiftRight(); 
 			break; 
 		}
@@ -83,6 +83,7 @@ void Matrix::shiftNumber(int dir) noexcept
 	}
 	else
 	{
-		std::cout << "Invalid Move" << std::endl; 
+		printw("Invalid Move"); 
+		refresh(); 
 	}
 }

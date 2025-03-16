@@ -3,9 +3,8 @@
 #include<vector>
 #include<algorithm>
 #include<iostream>
-#include<iomanip>
-#include<conio.h>
-#include<iomanip> // std::setw(), std::fill()
+// #include<iomanip>
+// #include<conio.h>
 #include<string>
 
 constexpr int PREFIX_CODE = -32;
@@ -27,7 +26,7 @@ void clearScreen();
 void printLine(int nums, int spaceRate); 
 void printNumbers(const std::vector<int>& row); 
 
-char readKey(); 
+int readKey(); 
 
 
 //  *******************Player information**************************
@@ -45,3 +44,7 @@ public:
 	static void display();
 	static void displayArrangedMatrix(int dim); 
 };
+
+
+void setupNcurses();
+void tearNcurses(); 

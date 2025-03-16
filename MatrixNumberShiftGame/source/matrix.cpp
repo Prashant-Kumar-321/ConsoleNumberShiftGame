@@ -1,4 +1,6 @@
-#include "matrix.hpp"
+#include<ncurses.h>
+
+#include "../Header/matrix.hpp"
 
 Matrix::Matrix(int dimension)
 	: boardDimension(dimension), 
@@ -117,23 +119,23 @@ bool Matrix::isArrange()const noexcept { return isArranged; }
 
 void Matrix::show()const noexcept(true)
 {
-	std::cout << std::endl;
+	addch('\n'); 
 	const int& nums = boardDimension; // total number of numbers in a row 
 	const int spaceRate = 4;        // How space a number will take
-	std::string initialHorizontalSapce = "\t\t\t";
+	const std::string initialHorizontalSpace = "            "; // Equivalent to three tab spaces
 
 	for (int i = 0; i < boardDimension; i++) {
-		std::cout << initialHorizontalSapce;
+		printw("%s", initialHorizontalSpace.c_str()); 
 		printLine(nums, spaceRate);
-		std::cout << std::endl;
+		addch('\n');
 
-		std::cout << initialHorizontalSapce;
+		printw("%s", initialHorizontalSpace.c_str()); 
 		printNumbers(gameBoard[i]);
-		std::cout << std::endl;
+		addch('\n');
 	}
-	std::cout << initialHorizontalSapce;
+	printw("%s", initialHorizontalSpace.c_str()); 
 	printLine(nums, spaceRate);
-	std::cout << std::endl; 
+	addch('\n'); 
 
 }
 

@@ -1,12 +1,14 @@
 #include <iostream>
 #include <string>
 #include <memory>
+#include<ncurses.h>
 
-#include "matrix.hpp"
-
+#include "../Header/matrix.hpp"
 
 int main()
 {
+	setupNcurses();
+
 	int LEVEL = 1;
 	int TOTALMOVES = 700;
 	std::string player = "Prashant";
@@ -29,10 +31,11 @@ int main()
 			displayStatusofPlayer(player, LEVEL, gameBoard->remainingMoves());
 
 			gameBoard->show();
-			char key = readKey();
+			int key = readKey();
 
 			// user wants to end the game 
 			if (key == ESC) { // Esc key; 
+				tearNcurses(); 
 				exit(0);
 			}
 
@@ -42,9 +45,11 @@ int main()
 		// Decision after game loop 
 		if (gameBoard->isArrange()) {
 
-			std::cout << "congratulation \""<< player << "\" " << std::endl;
+			printw("Congratulations \"%s\"\n", player.c_str());
+			refresh();
 
 			if (askWinnerIfWantsToLevelUp() == NO) {
+				tearNcurses(); 
 				std::exit(0); 
 			}
 			else {
@@ -59,14 +64,17 @@ int main()
 			displayStatusofPlayer(player, LEVEL, gameBoard->remainingMoves());
 			gameBoard->show();
 
-			std::cout << "You Loose the Game" << std::endl;
+			printw("You Loose the Game \n");
+			refresh(); 
 			if (askLooserIfWantsToRetry() == false) {
+				tearNcurses(); 
 				exit(0); // clsoe game
 			}
 		}
     }
 
-	std::cout << "Prgram has ended " << std::endl;
-	std::cout<< _getch(); 
+	printw("Program has ended"); 
+	refresh(); 
+	tearNcurses();
 	return 0; 
 }
