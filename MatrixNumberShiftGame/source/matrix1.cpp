@@ -50,7 +50,7 @@ void Matrix::shiftUp()noexcept
 	empty_R += 1;  // empty cell came one cell down 
 }
 
-void Matrix::shiftDown()noexcept
+void Matrix::shiftDown() noexcept
 {
 	int& emptyCell = gameBoard[empty_R][empty_C];
 	int& upCell = gameBoard[empty_R - 1][empty_C];

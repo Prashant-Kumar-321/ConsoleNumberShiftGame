@@ -78,3 +78,9 @@ int main()
 	tearNcurses();
 	return 0; 
 }
+
+/* TO DO: 
+
+	1. Change the color of text
+	2. Make it more attractive visually
+*/
