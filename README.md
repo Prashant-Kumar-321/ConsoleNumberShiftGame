@@ -4,6 +4,15 @@
 
 This is a console number shift game implemented in C++. The game displays a square matrix with randomly placed numbers. The goal of the game is to arrange these randomly placed numbers in ascending order by shifting using **arrows** keys.
 
+
+## Features 
+1. The game displays a square matrix with randomly placed numbers.
+2. Arrow Keys Interaction to move number 
+3. The game displays the number of moves made by the player.
+4. There are levels in game
+6. Only One library dependency ```ncurses```
+
+
 ## How to play the game 
 
 1. The game starts by displaying *rule of game* how to move numbers and others. 
